@@ -33,7 +33,7 @@ int _printf(const char *format, ...)
 		_XcHar('%');
 		nm++;
 	}
-	else
+	else if (format[nm] != '%')
 		_XcHar(format[nm]);
 	count += 1;
 	}
