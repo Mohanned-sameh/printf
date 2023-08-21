@@ -34,7 +34,6 @@ int _printf(const char *format, ...)
 		{
 			_XcHar('%');
 			nm++;
-			count++;
 		}
 		else if (format[nm] == '%' && (format[nm + 1] == 'd' || format[nm + 1] == 'i'))
 		{
@@ -44,7 +43,7 @@ int _printf(const char *format, ...)
 			if (number < 0)
 			{
 				_XcHar('-');
-				count++;
+
 				number = -number;
 			}
 			digit = 0;
@@ -64,15 +63,14 @@ int _printf(const char *format, ...)
 				_XcHar((temp / divider) + '0');
 				temp %= divider;
 				divider /= 10;
-				count++;
 			}
 			nm++;
 		}
 		else
 		{
 			_XcHar(format[nm]);
-			count++;
 		}
+		count++;
 	}
 
 	va_end(args);
