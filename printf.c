@@ -17,26 +17,29 @@ int _printf(const char *format, ...)
 
 	for (nm = 0; format[nm] != '\0'; nm++)
 	{
-	if (format[nm] == '%' && format[nm +1] == 'c')
+		if (format[nm] == '%' && format[nm  + 1] == 'c')
 		{
 			_XcHar(va_arg(args, int));
 			nm++;
 		}
-	else if (format[nm] == '%' && format[nm + 1] == 's')
-	{
-		string_count = makes (va_arg(args, char*));
+		else if (format[nm] == '%' && format[nm + 1] == 's')
+		{
+		string_count = makes(va_arg(args, char*));
 		nm++;
 		count += (string_count - 1);
-	}
-	else if (format[nm] == '%' && format[nm + 1] == '%')
-	{
+		}
+		else if (format[nm] == '%' && format[nm + 1] == '%')
+		{
 		_XcHar('%');
 		nm++;
-	}
-	else if (format[nm] != '%')
+		}
+		else
+		{
 		_XcHar(format[nm]);
+		}
 	count += 1;
 	}
+
 	va_end(args);
 
 	return (count);
