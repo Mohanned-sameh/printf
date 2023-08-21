@@ -7,5 +7,5 @@
 
 int _XcHar(char c);
 int _printf(const char *format, ...);
-
+int makes(char *c);
 #endif
