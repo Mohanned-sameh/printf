@@ -17,7 +17,9 @@ int _printf(const char *format, ...)
 
 	for (nm = 0; format[nm] != '\0'; nm++)
 	{
-		if (format[nm] == '%' && format[nm  + 1] == 'c')
+		if (format[nm] != '%')
+			_XcHar(format[nm]);
+		else if (format[nm] == '%' && format[nm  + 1] == 'c')
 		{
 			_XcHar(va_arg(args, int));
 			nm++;
@@ -32,10 +34,6 @@ int _printf(const char *format, ...)
 		{
 		_XcHar('%');
 		nm++;
-		}
-		else
-		{
-		_XcHar(format[nm]);
 		}
 	count += 1;
 	}
