@@ -22,18 +22,18 @@ int _printf(const char *format, ...)
 			_XcHar(va_arg(args, int));
 			nm++;
 		}
-		if (format[nm] == '%' && format[nm + 1] == 's')
+		else if (format[nm] == '%' && format[nm + 1] == 's')
 		{
 		string_count = makes(va_arg(args, char*));
 		nm++;
 		count += (string_count - 1);
 		}
-		if (format[nm] == '%' && format[nm + 1] == '%')
+		else if (format[nm] == '%' && format[nm + 1] == '%')
 		{
 		_XcHar('%');
 		nm++;
 		}
-		if (format[nm] != '%')
+		else
 			_XcHar(format[nm]);
 	count += 1;
 	}
