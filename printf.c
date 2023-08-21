@@ -10,9 +10,8 @@ int _printf(const char *format, ...)
 	unsigned int nm, string_count;
 	va_list args;
 
-	if ((format[0] == '%' && format[1] == '\0')
-	|| (format[0] == '%' && format[1] == ' ') || (format == NULL))
-	return (-1);
+	if (!format || (format[0] == '%' && format[1] == '\0'))
+		return (-1);
 	va_start(args, format);
 	for (nm = 0; format[nm] != '\0'; nm++)
 	{
@@ -25,7 +24,7 @@ int _printf(const char *format, ...)
 		{
 			string_count = makes(va_arg(args, char *));
 			nm++;
-			count += string_count;
+			count += (string_count - 1);
 		}
 		else if (format[nm] == '%' && format[nm + 1] == '%')
 		{
@@ -42,7 +41,7 @@ int _printf(const char *format, ...)
 		}
 		else
 			_XcHar(format[nm]);
-		count++;
+		count += 1;
 	}
 	va_end(args);
 	return (count);
