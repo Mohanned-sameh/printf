@@ -10,7 +10,9 @@ int _printf(const char *format, ...)
 	unsigned int nm, string_count;
 	va_list args;
 
-	if (format == NULL)
+	if (!format || (format[0] == '%' && format[1] == '\0') ||
+	(format == NULL) ||
+	(format[0] == '%' && format[1] == ' '))
 		return (-1);
 	va_start(args, format);
 	for (nm = 0; format[nm] != '\0'; nm++)
@@ -38,6 +40,7 @@ int _printf(const char *format, ...)
 
 			inthandler(number);
 			nm++;
+			count += number;
 		}
 		else
 			_XcHar(format[nm]);
