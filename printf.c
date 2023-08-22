@@ -32,8 +32,8 @@ int _printf(const char *format, ...)
 			_XcHar('%');
 			nm++;
 		}
-		else if (format[nm] == '%' && (format[nm + 1] == 'd'
-					|| format[nm + 1] == 'i'))
+		else if ((format[nm] == '%' && format[nm + 1] == 'd') ||
+			(format [nm] == '%' && format[nm + 1] == 'i'))
 		{
 			int number = va_arg(args, int);
 
