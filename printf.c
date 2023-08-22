@@ -10,7 +10,7 @@ int _printf(const char *format, ...)
 	unsigned int nm, string_count;
 	va_list args;
 
-	if (!format || (format == NULL) 
+	if (!format || (format == NULL)
 	|| (format[0] == '%' && format[1] == '\0'))
 		return (-1);
 	va_start(args, format);
@@ -33,7 +33,7 @@ int _printf(const char *format, ...)
 			nm++;
 		}
 		else if ((format[nm] == '%' && format[nm + 1] == 'd') ||
-			(format [nm] == '%' && format[nm + 1] == 'i'))
+			(format[nm] == '%' && format[nm + 1] == 'i'))
 		{
 			int number = va_arg(args, int);
 
