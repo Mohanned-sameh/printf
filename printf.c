@@ -24,15 +24,15 @@ int _printf(const char *format, ...)
 		{
 			string_count = makes(va_arg(args, char *));
 			nm++;
-			count += string_count;
+			count += (string_count - 1);
 		}
 		else if (format[nm] == '%' && format[nm + 1] == '%')
 		{
 			_XcHar('%');
 			nm++;
 		}
-		else if (format[nm] == '%' && (format[nm + 1] == 'd'
-					|| format[nm + 1] == 'i'))
+		else if ((format[nm] == '%' && format[nm + 1] == 'd') ||
+			(format[nm] == '%' && format[nm + 1] == 'i'))
 		{
 			int number = va_arg(args, int);
 
@@ -41,7 +41,7 @@ int _printf(const char *format, ...)
 		}
 		else
 			_XcHar(format[nm]);
-		count++;
+		count += 1;
 	}
 	va_end(args);
 	return (count);
